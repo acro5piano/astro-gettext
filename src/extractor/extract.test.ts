@@ -48,8 +48,18 @@ test('adding file', async (t) => {
       msgstr: '',
     },
     {
-      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:16'],
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:17'],
       msgid: 'Canadian Club Original 1858 is an exceptionally smooth whisky',
+      msgstr: '',
+    },
+    {
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:18'], // :19 is correct, but this is limitation of Astro compiler
+      msgid: 'Arr1',
+      msgstr: '',
+    },
+    {
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:18'], // Same as above
+      msgid: 'Arr2',
       msgstr: '',
     },
   ])

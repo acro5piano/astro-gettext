@@ -4,13 +4,17 @@ import { Visitor, is } from '@astrojs/compiler/utils'
 
 import { escapeMsgId, PoEntry } from './PoEntry.js'
 
-export function walkRecursively(node: Node, callback: Visitor): void {
+function walkRecursively(node: Node, callback: Visitor): void {
   callback(node)
   if (is.parent(node)) {
     for (const child of node.children) {
       walkRecursively(child, callback)
     }
   }
+}
+
+function isArrayValue(value: string) {
+  return /\[[\s\S]+\]/.test(value)
 }
 
 export async function extract(
@@ -53,7 +57,14 @@ export async function extract(
     }
     if (is.element(node) || is.component(node)) {
       node.attributes.forEach((attr) => {
-        pushToEntriesIfNeeded(attr.value, attr.position)
+        if (isArrayValue(attr.value)) {
+          const matches = attr.value.match(/t`(.+)`/g) || []
+          for (const match of matches) {
+            pushToEntriesIfNeeded(match, attr.position)
+          }
+        } else {
+          pushToEntriesIfNeeded(attr.value, attr.position)
+        }
       })
     }
   })

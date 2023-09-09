@@ -1,8 +1,10 @@
 ---
 type Props = {
   text: string
+  textArray: string[]
 }
 ---
 <div>
   {Astro.props.text}
+  {Astro.props.textArray.map(t => <div>{t})</div>)}
 </div>

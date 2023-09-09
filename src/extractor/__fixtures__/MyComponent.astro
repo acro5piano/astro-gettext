@@ -13,5 +13,11 @@ const show = true
   <input type="number" defaultValue={t`Get started with astro-gettext`} />
 
   {show && <input type="number" defaultValue={t`Working Hard to build better "i18n" library`} />}
-  <MyComponentPart text={t`Canadian Club Original 1858 is an exceptionally smooth whisky`} />
+  <MyComponentPart
+    text={t`Canadian Club Original 1858 is an exceptionally smooth whisky`}
+    textArray={[
+      t`Arr1`,
+      t`Arr2`,
+    ]}
+  />
 </div>
