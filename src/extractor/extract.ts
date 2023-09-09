@@ -6,11 +6,12 @@ import { PoEntry } from './PoEntry'
 export async function extract(
   fileName: string,
   content: string,
+  existingEntries: PoEntry[],
 ): Promise<PoEntry[]> {
-  const result = await parse(content, {})
+  const parseResult = await parse(content, {})
 
-  let entries: PoEntry[] = []
-  walkRecursively(result.ast, (node) => {
+  let entries: PoEntry[] = existingEntries.slice()
+  walkRecursively(parseResult.ast, (node) => {
     if (!is.text(node)) {
       return
     }
@@ -31,7 +32,9 @@ export async function extract(
       '',
     )
     if (existingEntry) {
-      existingEntry.comments.push(comment)
+      if (existingEntry.comments.every((c) => c !== comment)) {
+        existingEntry.comments.push(comment)
+      }
     } else {
       entries.push({
         comments: [comment],
