@@ -20,14 +20,16 @@ program
 program
   .command('extract')
   .description('Extract astro files into po file')
-  .requiredOption('--po', 'po file to output')
+  .requiredOption('--po <path>', 'po file to output')
   .option('--pattern <pattern>', 'glob pattern to extract', 'src/**/*.astro')
-  .action(async function cliExtract(_, options: ExtractOption) {
+  .action(async (options: ExtractOption) => {
     // 1. render po from exising one
     // 2. glob and read and extract all files
     // 3. render updated po file
     // 4. write out
-    const exisingPoFileContent = await readFile(options.po, 'utf8')
+    const exisingPoFileContent = await readFile(options.po, 'utf8').catch(
+      () => '',
+    )
     let entries: PoEntry[] = createPoEntries(exisingPoFileContent)
 
     for (const filePath of await globby(options.pattern)) {
