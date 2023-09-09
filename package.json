@@ -1,6 +1,6 @@
 {
   "name": "astro-gettext",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
@@ -10,6 +10,14 @@
   "bin": {
     "astro-gettext": "./bin/astro-gettext.mjs"
   },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.map",
+    "dist/**/*.d.ts",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "ava",
     "build": "tsc",
