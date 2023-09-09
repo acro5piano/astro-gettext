@@ -27,11 +27,11 @@ export async function extract(
       return
     }
 
-    const existingEntry = entries.find((e) => e.msgid === msgid)
+    const entry = entries.find((e) => e.msgid === msgid)
     const comment = `#: ${fileNameNormalized}:${node.position!.start.line}`
-    if (existingEntry) {
-      if (existingEntry.comments.every((c) => c !== comment)) {
-        existingEntry.comments.push(comment)
+    if (entry) {
+      if (entry.comments.every((c) => c !== comment)) {
+        entry.comments.push(comment)
       }
     } else {
       entries.push({

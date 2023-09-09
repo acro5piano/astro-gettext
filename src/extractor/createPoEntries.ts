@@ -13,8 +13,6 @@ export function createPoEntries(input: string): PoEntry[] {
     return []
   }
 
-  console.log(JSON.stringify(res, null, 2))
-
   return keys(defaultContextMessages).map((msgid) => {
     const trans = defaultContextMessages[msgid] as parser.GetTextTranslation
     const comments: string[] = []
