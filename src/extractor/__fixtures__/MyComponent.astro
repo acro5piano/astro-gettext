@@ -1,5 +1,6 @@
 ---
 import { t } from './Trans.js'
+import MyComponentPart from './MyComponentPart.astro'
 const show = true
 ---
 <div>
@@ -12,4 +13,5 @@ const show = true
   <input type="number" defaultValue={t`Get started with astro-gettext`} />
 
   {show && <input type="number" defaultValue={t`Working Hard to build better "i18n" library`} />}
+  <MyComponentPart text={t`Canadian Club Original 1858 is an exceptionally smooth whisky`} />
 </div>

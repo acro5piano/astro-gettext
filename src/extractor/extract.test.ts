@@ -21,7 +21,8 @@ test('adding file', async (t) => {
     {
       comments: [
         '#: src/extractor/__fixtures__/MyComponent.astro:7',
-        '#: src/extractor/__fixtures__/MyComponent.astro:9',
+        '#: src/extractor/__fixtures__/MyComponent.astro:8',
+        '#: src/extractor/__fixtures__/MyComponent.astro:10',
       ],
       msgid:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -30,20 +31,25 @@ test('adding file', async (t) => {
     },
     {
       comments: [
-        '#: src/extractor/__fixtures__/MyComponent.astro:6',
-        '#: src/extractor/__fixtures__/MyComponent.astro:11',
+        '#: src/extractor/__fixtures__/MyComponent.astro:7',
+        '#: src/extractor/__fixtures__/MyComponent.astro:12',
       ],
       msgid: 'Hello World',
       msgstr: '',
     },
     {
-      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:12'],
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:13'],
       msgid: 'Get started with astro-gettext',
       msgstr: '',
     },
     {
-      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:14'],
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:15'],
       msgid: 'Working Hard to build better \\"i18n\\" library',
+      msgstr: '',
+    },
+    {
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:16'],
+      msgid: 'Canadian Club Original 1858 is an exceptionally smooth whisky',
       msgstr: '',
     },
   ])

@@ -1,9 +1,17 @@
 import { parse } from '@astrojs/compiler'
 import { Node } from '@astrojs/compiler/types'
-import { is } from '@astrojs/compiler/utils'
+import { Visitor, is } from '@astrojs/compiler/utils'
 
-import { walkRecursively } from './ast.js'
 import { escapeMsgId, PoEntry } from './PoEntry.js'
+
+export function walkRecursively(node: Node, callback: Visitor): void {
+  callback(node)
+  if (is.parent(node)) {
+    for (const child of node.children) {
+      walkRecursively(child, callback)
+    }
+  }
+}
 
 export async function extract(
   fileName: string,
@@ -43,7 +51,7 @@ export async function extract(
     if (is.text(node)) {
       pushToEntriesIfNeeded(node.value, node.position)
     }
-    if (is.element(node)) {
+    if (is.element(node) || is.component(node)) {
       node.attributes.forEach((attr) => {
         pushToEntriesIfNeeded(attr.value, attr.position)
       })
