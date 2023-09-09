@@ -5,8 +5,14 @@
   "repository": "git@github.com:acro5piano/fast-ttag",
   "author": "Kay Gosho <ketsume0211@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "ava",
+    "build": "tsc",
+    "astro-gettext": "./bin/astro-gettext.js"
+  },
   "dependencies": {
     "@astrojs/compiler": "^2.1.0",
+    "commander": "^11.0.0",
     "gettext-parser": "^7.0.1",
     "globby": "^13.2.2"
   },
@@ -18,8 +24,5 @@
     "esbuild": "^0.19.2",
     "esbuild-register": "^3.4.2",
     "typescript": "^5.2.2"
-  },
-  "scripts": {
-    "test": "ava"
   }
 }
