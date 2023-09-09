@@ -3,7 +3,7 @@ import { Node } from '@astrojs/compiler/types'
 import { is } from '@astrojs/compiler/utils'
 
 import { walkRecursively } from './ast.js'
-import { PoEntry } from './PoEntry.js'
+import { escapeMsgId, PoEntry } from './PoEntry.js'
 
 export async function extract(
   fileName: string,
@@ -20,7 +20,7 @@ export async function extract(
     if (!match) {
       return
     }
-    const msgid = match[1]?.replace(/"/g, '\\"')
+    const msgid = match[1] && escapeMsgId(match[1])
     if (!msgid) {
       return
     }

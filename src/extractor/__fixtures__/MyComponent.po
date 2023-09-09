@@ -7,3 +7,7 @@ msgstr "こんにちは"
 # src/extractor/__fixtures__/MyComponent.astro:8
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 msgstr "Lorem Ipsum は組版業界で使われてきたシンプルなダミーテキストです。"
+
+# src/extractor/__fixtures__/MyComponent.astro:14
+msgid "Working Hard to build better \"i18n\" library"
+msgstr "より良い \"i18n\" ライブラリのために頑張ってます。"

@@ -13,22 +13,21 @@ test('new file', async (t) => {
   const res = createPoEntries(input)
   t.deepEqual(res, [
     {
-      comments: [
-        '#: src/extractor/__fixtures__/MyComponent.astro:5',
-        '#: src/extractor/__fixtures__/MyComponent.astro:10',
-      ],
+      comments: [],
       msgid: 'Hello World',
       msgstr: 'こんにちは',
     },
     {
-      comments: [
-        '#: src/extractor/__fixtures__/MyComponent.astro:6',
-        '#: src/extractor/__fixtures__/MyComponent.astro:8',
-      ],
+      comments: [],
       msgid:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       msgstr:
         'Lorem Ipsum は組版業界で使われてきたシンプルなダミーテキストです。',
+    },
+    {
+      comments: [],
+      msgid: 'Working Hard to build better \\"i18n\\" library',
+      msgstr: 'より良い \\"i18n\\" ライブラリのために頑張ってます。',
     },
   ])
   t.log(JSON.stringify(res, null, 2))

@@ -1,6 +1,6 @@
 import parser from 'gettext-parser'
 
-import { PoEntry } from './PoEntry.js'
+import { PoEntry, escapeMsgId } from './PoEntry.js'
 
 export function keys<T extends object>(obj: T) {
   return Object.keys(obj) as Array<keyof T>
@@ -16,16 +16,10 @@ export function createPoEntries(input: string): PoEntry[] {
 
   return keys(defaultContextMessages).map((msgid) => {
     const trans = defaultContextMessages[msgid] as parser.GetTextTranslation
-    const comments: string[] = []
-    if (trans.comments?.translator) {
-      comments.push(
-        ...trans.comments.translator.split('\n').map((c) => `#: ${c}`),
-      )
-    }
     return {
-      msgid: trans.msgid,
-      msgstr: trans.msgstr[0] as string,
-      comments,
+      msgid: escapeMsgId(trans.msgid),
+      msgstr: escapeMsgId(trans.msgstr[0] as string),
+      comments: [],
     }
   })
 }
