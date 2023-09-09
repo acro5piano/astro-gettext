@@ -20,9 +20,9 @@ program
 program
   .command('extract')
   .description('Extract astro files into po file')
-  .option('--po', 'po file to output')
+  .requiredOption('--po', 'po file to output')
   .option('--pattern <pattern>', 'glob pattern to extract', 'src/**/*.astro')
-  .action(async (_, options: ExtractOption) => {
+  .action(async function cliExtract(_, options: ExtractOption) {
     // 1. render po from exising one
     // 2. glob and read and extract all files
     // 3. render updated po file
