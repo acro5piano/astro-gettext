@@ -9,6 +9,7 @@ export async function extract(
   existingEntries: PoEntry[],
 ): Promise<PoEntry[]> {
   const parseResult = await parse(content, {})
+  const fileNameNormalized = fileName.replace('./', '')
 
   let entries: PoEntry[] = existingEntries.slice()
   walkRecursively(parseResult.ast, (node) => {
@@ -27,10 +28,7 @@ export async function extract(
     }
 
     const existingEntry = entries.find((e) => e.msgid === msgid)
-    const comment = `# ${fileName}:${node.position!.start.line}`.replace(
-      './',
-      '',
-    )
+    const comment = `#: ${fileNameNormalized}:${node.position!.start.line}`
     if (existingEntry) {
       if (existingEntry.comments.every((c) => c !== comment)) {
         existingEntry.comments.push(comment)

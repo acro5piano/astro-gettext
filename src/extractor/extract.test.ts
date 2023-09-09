@@ -12,16 +12,16 @@ test('new file', async (t) => {
   t.deepEqual(res, [
     {
       comments: [
-        '# src/extractor/__fixtures__/MyComponent.astro:5',
-        '# src/extractor/__fixtures__/MyComponent.astro:10',
+        '#: src/extractor/__fixtures__/MyComponent.astro:5',
+        '#: src/extractor/__fixtures__/MyComponent.astro:10',
       ],
       msgid: 'Hello World',
       msgstr: '',
     },
     {
       comments: [
-        '# src/extractor/__fixtures__/MyComponent.astro:6',
-        '# src/extractor/__fixtures__/MyComponent.astro:8',
+        '#: src/extractor/__fixtures__/MyComponent.astro:6',
+        '#: src/extractor/__fixtures__/MyComponent.astro:8',
       ],
       msgid:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -35,7 +35,7 @@ test('adding file', async (t) => {
   const input = await readFile(FIXTURE, 'utf8')
   const existing = [
     {
-      comments: ['# src/extractor/__fixtures__/MyComponent.astro:6'],
+      comments: ['#: src/extractor/__fixtures__/MyComponent.astro:6'],
       msgid:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       msgstr:
@@ -46,8 +46,8 @@ test('adding file', async (t) => {
   t.deepEqual(res, [
     {
       comments: [
-        '# src/extractor/__fixtures__/MyComponent.astro:6',
-        '# src/extractor/__fixtures__/MyComponent.astro:8',
+        '#: src/extractor/__fixtures__/MyComponent.astro:6',
+        '#: src/extractor/__fixtures__/MyComponent.astro:8',
       ],
       msgid:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -56,8 +56,8 @@ test('adding file', async (t) => {
     },
     {
       comments: [
-        '# src/extractor/__fixtures__/MyComponent.astro:5',
-        '# src/extractor/__fixtures__/MyComponent.astro:10',
+        '#: src/extractor/__fixtures__/MyComponent.astro:5',
+        '#: src/extractor/__fixtures__/MyComponent.astro:10',
       ],
       msgid: 'Hello World',
       msgstr: '',
