@@ -23,7 +23,6 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@types/gettext-parser": "^4.0.2",
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.21",
     "ava": "^5.3.1",

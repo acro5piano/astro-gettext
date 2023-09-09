@@ -1,0 +1,34 @@
+{
+  "charset": "utf-8",
+  "translations": {
+    "": {
+      "Hello World": {
+        "msgid": "Hello World",
+        "comments": {
+          "translator": "src/extractor/__fixtures__/MyComponent.astro:5\nsrc/extractor/__fixtures__/MyComponent.astro:10"
+        },
+        "msgstr": [
+          "こんにちは"
+        ]
+      },
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.": {
+        "msgid": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "comments": {
+          "translator": "src/extractor/__fixtures__/MyComponent.astro:6\nsrc/extractor/__fixtures__/MyComponent.astro:8"
+        },
+        "msgstr": [
+          "Lorem Ipsum は組版業界で使われてきたシンプルなダミーテキストです。"
+        ]
+      },
+      "Working Hard to build better \"i18n\" library": {
+        "msgid": "Working Hard to build better \"i18n\" library",
+        "comments": {
+          "translator": "src/extractor/__fixtures__/MyComponent.astro:14"
+        },
+        "msgstr": [
+          "より良い \"i18n\" ライブラリのために頑張ってます。"
+        ]
+      }
+    }
+  }
+}

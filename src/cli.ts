@@ -1,22 +1,22 @@
 import { globby } from 'globby'
 import { readFile, writeFile } from 'fs/promises'
 import { program } from 'commander'
+import parser from 'gettext-parser'
 
 import { extract } from './extractor/extract.js'
 import { renderPo } from './extractor/renderPo.js'
 import { createPoEntries } from './extractor/createPoEntries.js'
 import { PoEntry } from './extractor/PoEntry.js'
 
-type ExtractOption = {
-  po: string
-  pattern: string
-}
-
 program
   .name('astro-gettext')
   .description('Simple gettext-style i18n solution for Astro')
   .version('0.0.1')
 
+type ExtractOption = {
+  po: string
+  pattern: string
+}
 program
   .command('extract')
   .description('Extract astro files into po file')
@@ -31,13 +31,33 @@ program
       () => '',
     )
     let entries: PoEntry[] = createPoEntries(exisingPoFileContent)
-
     for (const filePath of await globby(options.pattern)) {
       const astroFile = await readFile(filePath, 'utf8')
       entries = await extract(filePath, astroFile, entries)
     }
-
     writeFile(options.po, renderPo(entries), 'utf8')
+  })
+
+type Po2JsonOption = {
+  po: string
+  output: string
+  pretty: boolean
+}
+program
+  .command('po2json')
+  .description('Compile .po file into json')
+  .requiredOption('--po <path>', 'po file to input')
+  .requiredOption('--output <path>', 'json file to output')
+  .option('--pretty', 'output json becompe pretty if specified', false)
+  .action(async (options: Po2JsonOption) => {
+    const poContent = await readFile(options.po, 'utf8')
+    const indent = options.pretty ? 2 : 0
+    const generated = JSON.stringify(
+      parser.po.parse(poContent),
+      undefined,
+      indent,
+    )
+    writeFile(options.output, generated, 'utf8')
   })
 
 program.parseAsync()

@@ -9,12 +9,16 @@ export class Trans<T extends string> {
     this.poCache = {}
   }
 
-  addLocale(locale: T, po: string) {
-    if (this.poCache[locale] === po) {
+  addLocaleFromPoString(locale: T, poContent: string) {
+    if (this.poCache[locale] === poContent) {
       return
     }
-    this.poCache[locale] = po
-    this.locales[locale] = parser.po.parse(po)
+    this.poCache[locale] = poContent
+    this.locales[locale] = parser.po.parse(poContent)
+  }
+
+  addLocale(locale: T, po: parser.GetTextTranslations) {
+    this.locales[locale] = po
   }
 
   get(locale: T) {
