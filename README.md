@@ -1,2 +1,3 @@
-# fast-ttag
-Fast gettext i18n in Node
+# astro-gettext
+
+GNU gettext extractor for Astro
