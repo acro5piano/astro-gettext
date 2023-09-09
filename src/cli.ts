@@ -7,6 +7,7 @@ import { extract } from './extractor/extract.js'
 import { renderPo } from './extractor/renderPo.js'
 import { createPoEntries } from './extractor/createPoEntries.js'
 import { PoEntry } from './extractor/PoEntry.js'
+import { keys } from './utils/keys.js'
 
 program
   .name('astro-gettext')
@@ -52,11 +53,14 @@ program
   .action(async (options: Po2JsonOption) => {
     const poContent = await readFile(options.po, 'utf8')
     const indent = options.pretty ? 2 : 0
-    const generated = JSON.stringify(
-      parser.po.parse(poContent),
-      undefined,
-      indent,
-    )
+    const parsedPo = parser.po.parse(poContent)
+    const defaultTrans = parsedPo.translations['']
+    if (defaultTrans) {
+      keys(defaultTrans).forEach((key) => {
+        delete defaultTrans[key]?.comments
+      })
+    }
+    const generated = JSON.stringify(parsedPo, undefined, indent)
     writeFile(options.output, generated, 'utf8')
   })
 
