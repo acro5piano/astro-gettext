@@ -20,7 +20,7 @@ export async function extract(
     if (!match) {
       return
     }
-    const msgid = match[1]
+    const msgid = match[1]?.replace(/"/g, '\\"')
     if (!msgid) {
       return
     }

@@ -1,5 +1,6 @@
 ---
 import { t } from 'astro-gettext'
+const show = true
 ---
 <div>
   <h1>{t`Hello World`}</h1>
@@ -9,4 +10,6 @@ import { t } from 'astro-gettext'
   </div>
   <h1>{t`Hello World`}</h1>
   <input type="number" defaultValue={t`Get started with astro-gettext`} />
+
+  {show && <input type="number" defaultValue={t`Working Hard to build better "i18n" library`} />}
 </div>
