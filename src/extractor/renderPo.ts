@@ -1,4 +1,4 @@
-import { PoEntry } from './PoEntry'
+import { PoEntry } from './PoEntry.js'
 
 export function renderPo(entries: PoEntry[]): string {
   let result = ''

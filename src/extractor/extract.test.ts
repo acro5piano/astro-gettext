@@ -1,6 +1,7 @@
 import test from 'ava'
-import { extract } from './extract'
 import { readFile } from 'fs/promises'
+
+import { extract } from './extract.js'
 
 const FIXTURE = require
   .resolve('./__fixtures__/MyComponent.astro')

@@ -1,4 +1,4 @@
-import { Node } from '@astrojs/compiler'
+import { Node } from '@astrojs/compiler/types'
 import { Visitor, is } from '@astrojs/compiler/utils'
 
 export function walkRecursively(node: Node, callback: Visitor): void {

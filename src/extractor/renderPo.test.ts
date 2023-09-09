@@ -1,6 +1,7 @@
 import test from 'ava'
 import dedent from 'dedent'
-import { renderPo } from './renderPo'
+
+import { renderPo } from './renderPo.js'
 
 test('test', async (t) => {
   const res = renderPo([

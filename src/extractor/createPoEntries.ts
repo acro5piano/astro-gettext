@@ -1,5 +1,6 @@
-import { PoEntry } from './PoEntry'
 import parser from 'gettext-parser'
+
+import { PoEntry } from './PoEntry.js'
 
 export function keys<T extends object>(obj: T) {
   return Object.keys(obj) as Array<keyof T>

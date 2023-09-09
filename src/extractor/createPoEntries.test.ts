@@ -1,6 +1,7 @@
 import test from 'ava'
-import { createPoEntries } from './createPoEntries'
 import { readFile } from 'fs/promises'
+
+import { createPoEntries } from './createPoEntries.js'
 
 const FIXTURE = require
   .resolve('./__fixtures__/MyComponent.po')

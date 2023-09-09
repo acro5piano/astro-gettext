@@ -1,7 +1,8 @@
 import { parse } from '@astrojs/compiler'
 import { is } from '@astrojs/compiler/utils'
-import { walkRecursively } from './ast'
-import { PoEntry } from './PoEntry'
+
+import { walkRecursively } from './ast.js'
+import { PoEntry } from './PoEntry.js'
 
 export async function extract(
   fileName: string,

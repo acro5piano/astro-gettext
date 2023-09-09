@@ -1,10 +1,11 @@
 import { globby } from 'globby'
-import { extract } from './extractor/extract'
-import { renderPo } from './extractor/renderPo'
-import { createPoEntries } from './extractor/createPoEntries'
-import { PoEntry } from './extractor/PoEntry'
 import { readFile, writeFile } from 'fs/promises'
 import { program } from 'commander'
+
+import { extract } from './extractor/extract.js'
+import { renderPo } from './extractor/renderPo.js'
+import { createPoEntries } from './extractor/createPoEntries.js'
+import { PoEntry } from './extractor/PoEntry.js'
 
 type ExtractOption = {
   po: string
@@ -12,10 +13,15 @@ type ExtractOption = {
 }
 
 program
+  .name('astro-gettext')
+  .description('Simple gettext-style i18n solution for Astro')
+  .version('0.0.1')
+
+program
   .command('extract')
   .description('Extract astro files into po file')
-  .argument('--po', 'po file to output')
-  .argument('--pattern', 'glob pattern to extract', 'src/**/*.astro')
+  .option('--po', 'po file to output')
+  .option('--pattern <pattern>', 'glob pattern to extract', 'src/**/*.astro')
   .action(async (_, options: ExtractOption) => {
     // 1. render po from exising one
     // 2. glob and read and extract all files

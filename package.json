@@ -1,14 +1,16 @@
 {
   "name": "fast-ttag",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "repository": "git@github.com:acro5piano/fast-ttag",
   "author": "Kay Gosho <ketsume0211@gmail.com>",
   "license": "MIT",
   "scripts": {
     "test": "ava",
     "build": "tsc",
-    "astro-gettext": "./bin/astro-gettext.js"
+    "astro-gettext": "./bin/astro-gettext.mjs"
   },
   "dependencies": {
     "@astrojs/compiler": "^2.1.0",
