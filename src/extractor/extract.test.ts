@@ -3,10 +3,7 @@ import { readFile } from 'fs/promises'
 
 import { extract } from './extract.js'
 
-const FIXTURE = './src/extractor/__fixtures__/MyComponent.astro'.replace(
-  process.cwd(),
-  '.',
-)
+const FIXTURE = 'src/extractor/__fixtures__/MyComponent.astro'
 
 test('adding file', async (t) => {
   const input = await readFile(FIXTURE, 'utf8')

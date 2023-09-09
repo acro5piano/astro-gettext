@@ -3,10 +3,7 @@ import { readFile } from 'fs/promises'
 
 import { createPoEntries } from './createPoEntries.js'
 
-const FIXTURE = './src/extractor/__fixtures__/MyComponent.po'.replace(
-  process.cwd(),
-  '.',
-)
+const FIXTURE = 'src/extractor/__fixtures__/MyComponent.po'
 
 test('new file', async (t) => {
   const input = await readFile(FIXTURE, 'utf8')
