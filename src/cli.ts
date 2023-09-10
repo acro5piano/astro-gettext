@@ -1,6 +1,6 @@
 import { globby } from 'globby'
 import { readFile, writeFile } from 'fs/promises'
-import { program } from 'commander'
+import { program } from '@commander-js/extra-typings'
 import parser from 'gettext-parser'
 
 import { extract } from './extractor/extract.js'
@@ -14,16 +14,12 @@ program
   .description('Simple gettext-style i18n solution for Astro')
   .version('0.0.1')
 
-type ExtractOption = {
-  po: string
-  pattern: string
-}
 program
   .command('extract')
   .description('Extract astro files into po file')
   .requiredOption('--po <path>', 'po file to output')
   .option('--pattern <pattern>', 'glob pattern to extract', 'src/**/*.astro')
-  .action(async (options: ExtractOption) => {
+  .action(async (options) => {
     // 1. render po from exising one
     // 2. glob and read and extract all files
     // 3. render updated po file
@@ -39,18 +35,13 @@ program
     writeFile(options.po, renderPo(entries), 'utf8')
   })
 
-type Po2JsonOption = {
-  po: string
-  output: string
-  pretty: boolean
-}
 program
   .command('po2json')
   .description('Compile .po file into json')
   .requiredOption('--po <path>', 'po file to input')
   .requiredOption('--output <path>', 'json file to output')
   .option('--pretty', 'output json becompe pretty if specified', false)
-  .action(async (options: Po2JsonOption) => {
+  .action(async (options) => {
     const poContent = await readFile(options.po, 'utf8')
     const indent = options.pretty ? 2 : 0
     const parsedPo = parser.po.parse(poContent)
