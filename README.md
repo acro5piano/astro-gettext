@@ -26,7 +26,9 @@ yarn add astro-gettext
 
 ## Implementation
 
-First, you need to declare supported languages.
+**1. Setup translation**
+
+By creating a translation instance, you can declare your supported languages:
 
 ```ts
 // src/locale.ts
@@ -35,7 +37,7 @@ import { Trans } from 'astro-gettext'
 export const trans = new Trans<'en' | 'ja'>()
 ```
 
-Then, write your Astro component like this:
+**2. Wrap strings with `t` tag**
 
 ```astro
 ---
@@ -51,7 +53,7 @@ const t = trans.get(Astro.url.includes('ja') ? 'ja' : 'en')
 </div>
 ```
 
-Then, extract the text with the CLI:
+**3. Setup localization**
 
 ```sh
 npm run astro-gettext extract --po ja.po
@@ -66,7 +68,7 @@ msgid "Hello World!"
 msgstr ""
 ```
 
-Then update the `.po` file:
+Let's add your translation by filling `msgstr`:
 
 ```po
 # ja.po
@@ -75,13 +77,15 @@ msgid "Hello World!"
 msgstr "こんにちは！"
 ```
 
-After updating it, convert the `.po` into JSON file:
+**4. Load translations**
+
+Convert the `.po` into JSON file so that Astro can load them in runtime:
 
 ```sh
 npm run astro-gettext po2json --po locales/ja.po --output src/ja.json --pretty
 ```
 
-It willl produce a json file like this:
+It will produce a json file like this:
 
 ```json
 {
@@ -97,7 +101,7 @@ It willl produce a json file like this:
 }
 ```
 
-Finally, update the locale definition:
+Finally, update the translation instance:
 
 ```ts
 // src/locale.ts
@@ -109,10 +113,6 @@ trans.addLocale('ja', ja) // <--- This
 ```
 
 Well Done! Then you will see your Astro app is translated, in a manner of gettext.
-
-# Limitations
-
-- SSG only.
 
 # TODO
 
