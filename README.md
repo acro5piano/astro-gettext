@@ -116,6 +116,7 @@ Well Done! Then you will see your Astro app is translated, in a manner of gettex
 
 # TODO
 
+- [ ] Support i18n in the gray-matter TS code area using [ts-morph](https://github.com/dsherret/ts-morph)
 - [ ] Variable support
 - [ ] Context support
 - [ ] `ngettext` support
