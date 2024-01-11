@@ -1,6 +1,6 @@
 {
   "name": "astro-gettext",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
