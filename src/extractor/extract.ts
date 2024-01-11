@@ -28,7 +28,7 @@ export async function extract(
   let entries: PoEntry[] = existingEntries.slice()
 
   function pushToEntriesIfNeeded(value: string, position: Node['position']) {
-    const match = value.trim().match(/t`(.+)`/)
+    const match = value.trim().match(/t`(.+?)`/)
     if (!match) {
       return
     }
@@ -58,7 +58,7 @@ export async function extract(
     if (is.element(node) || is.component(node)) {
       node.attributes.forEach((attr) => {
         if (isArrayValue(attr.value)) {
-          const matches = attr.value.match(/t`(.+)`/g) || []
+          const matches = attr.value.match(/t`(.+?)`/g) || []
           for (const match of matches) {
             pushToEntriesIfNeeded(match, attr.position)
           }
