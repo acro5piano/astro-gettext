@@ -44,9 +44,9 @@ export const trans = new Trans<'en' | 'ja'>()
 // src/pages/index.astro
 import { trans } from '../locale'
 
-// You need to implement a logic to retrieve the current language.
-// `Astro.url` is a recommended way, but it depends on your environment.
-const t = trans.get(Astro.url.includes('ja') ? 'ja' : 'en')
+// Depending on your environment, implement a logic to retrieve the current locale.
+const locale = Astro.url.startsWith('/ja') ? 'ja' : 'en'
+const t = trans.get(locale)
 ---
 <div>
   <h1>{t`Hello World!`}</h1>
